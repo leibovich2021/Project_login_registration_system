@@ -1,0 +1,35 @@
+connect whit python and mysql
+
+DATABASE = login_user
+
+
+
+1)
+import mysql.connector
+mydb = mysql.connector.connect(
+    host='localhost',
+    user='root',
+    password='denis1994',
+)
+
+mycursor = mydb.cursor()
+mycursor.execute("CREATE DATABASE login_user")
+mycursor.execute("SHOW DATABASES")
+for db in mycursor:
+    print(db)
+
+
+2)
+import mysql.connector
+mydb = mysql.connector.connect(
+    host='localhost',
+    user='root',
+    password='denis1994',
+    database='login_user'
+)
+
+mycursor = mydb.cursor()
+mycursor.execute("CREATE TABLE users (id INT AUTO_INCREMENT PRIMARY KEY, user VARCHAR(255), password INTEGER(10))")
+mycursor.execute("SHOW TABLES")
+for db in mycursor:
+    print(db)
