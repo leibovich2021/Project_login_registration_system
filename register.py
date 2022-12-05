@@ -1,8 +1,12 @@
 from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
-import  pymysql
+import pymysql
 ############functions
+
+def login_window():
+    root.destroy()
+    import loginpage
 def clear():
     entryfirstname.delete(0,END)
     entrylastname.delete(0,END)
@@ -43,6 +47,8 @@ def register():
                 con.close()
                 messagebox.showinfo("Success","Registration is Succesfull")
                 clear()
+                root.destroy()
+                import loginpage
         except Exception as e:
             messagebox.showerror('error', f'Error due to {e}')
 
@@ -100,7 +106,7 @@ entryanswer.place(x=370,y=355)
 
 passwordLabel=Label(registerFrame,text="Password",font=("times new roman",18,"bold"),fg="gray20")
 passwordLabel.place(x=20,y=440)
-entrypassword=Entry(registerFrame, font=('times new roman',18),bg='white')
+entrypassword=Entry(registerFrame, font=('times new roman',18),bg='white',show='*')
 entrypassword.place(x=20,y=475)
 
 
@@ -120,7 +126,7 @@ registerButton.place(x=250,y=580)
 
 
 loginimage=PhotoImage(file="login.png")
-loginButton=Button(root,image=loginimage,bd=0,bg='gold',cursor='hand2')
+loginButton=Button(root,image=loginimage,bd=0,bg='gold',cursor='hand2',command=login_window)
 loginButton.place(x=170,y=540)
 
 
